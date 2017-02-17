@@ -1,4 +1,12 @@
 # -*- coding: utf-8 -*-
+#
+# Cropper: crop news frame into block
+#
+# How to add a new cropper
+#   1. Add new cropper.py file in cropper folder
+#   2. Add new absolute import under last import
+#   3. Add correspond news media into support_news dict
+#
 
 from pynayzr.cropper import ftv
 from pynayzr.cropper import sets

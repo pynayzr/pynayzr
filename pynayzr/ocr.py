@@ -1,4 +1,17 @@
 # -*- coding: utf-8 -*-
+#
+# file: ocr.py
+# description: ocr.py provide an interface for image translate to text.
+#
+# API:
+#    parse_by_provider(img)
+# Args:
+#    img (Image.Image): Python PIL Image instance
+#
+# Returns:
+#    str: The text in the img
+#
+
 
 import requests
 

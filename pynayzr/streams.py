@@ -4,7 +4,6 @@ from PIL import Image
 import subprocess
 import tempfile
 
-TIMEOUT = 1
 
 support_news = {
     'pts': 'https://www.youtube.com/watch?v=zjGR32QyTkQ',
@@ -20,7 +19,9 @@ support_news = {
 
 
 def tvbs():
+    """Return TVBS livestream frame
     # NOTE: Not sure tvbs link will expire or not
+    """
     with tempfile.TemporaryDirectory() as temp_dir:
         ffmpeg = [
             'ffmpeg',
@@ -42,6 +43,13 @@ def tvbs():
 
 
 def get(news):
+    """Get Livestream frame by news media.
+
+    Args:
+        news (str): news media list in support_news
+    Returns:
+        Image.Image: PIL Image instance
+    """
     if news not in support_news:
         raise KeyError
 

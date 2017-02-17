@@ -5,8 +5,11 @@ from pynayzr import streams
 
 
 class TestStreams(unittest.TestCase):
-    def test_qq(self):
+    def test_cti(self):
         streams.get('cti').close()
+
+    def test_tvbs(self):
+        streams.get('tvbs').close()
 
 
 if __name__ == '__main__':

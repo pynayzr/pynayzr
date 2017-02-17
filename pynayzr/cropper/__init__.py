@@ -6,6 +6,7 @@ from pynayzr.cropper import ttv
 from pynayzr.cropper import cti
 from pynayzr.cropper import tvbs
 from pynayzr.cropper import ebc
+from pynayzr.cropper import pts
 
 support_news = {
     'ftv': ftv.FTVCropper,
@@ -13,5 +14,6 @@ support_news = {
     'ttv': ttv.TTVCropper,
     'cti': cti.CTICropper,
     'tvbs': tvbs.TVBSCropper,
-    'ebc': ebc.EBCCropper
+    'ebc': ebc.EBCCropper,
+    'pts': pts.PTSCropper
 }

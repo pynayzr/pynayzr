@@ -41,6 +41,7 @@ def main():
         parser = ocr.parse_by_google
 
     # Parse News, and select image source (from live or local image)
+    analyze = None
     if args.news:
         if args.input:
             analyze = pynayzr.NewsModel(args.news,
@@ -49,10 +50,8 @@ def main():
             analyze = pynayzr.analyze(args.news, parser=parser)
         print(analyze.to_json())
 
-    if args.output:
-        args.output = ''.join([args.output.strip('/'), '/'])
-        if analyze:
-            analyze.img.save('%s%s.jpg' % (args.output, analyze.news))
+    if args.output and analyze:
+            analyze.img.save(args.output)
 
 
 if __name__ == '__main__':

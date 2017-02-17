@@ -53,10 +53,10 @@ $ pynayzr --gc key.json -n tvbs
 The options `-o` should only indicate directory, not including filename
 
 ```bash
-$ pynayzr --gc key.json -n tvbs -o .
+$ pynayzr --gc key.json -n tvbs -o out.jpg
 {"title": "天外飛萊輪胎砸甲車 駕駛,乘客驚聲尖叫\n", "subpoint": null, "subtitle": "7天禁宰-送運松村滷味鴨賞恐缺貨衝擊\n", "type": "news", "source": null, "news": "tvbs", "timestamp": "2017-02-17 12:54:12"}
 $ ls
-tvbs.jpg
+out.jpg
 ```
 
 ### Reanalyze from image
@@ -66,7 +66,7 @@ method to get the text. Note that you should also indicate the news source, so
 that pynayzr can parse in correct news cropper
 
 ```bash
-$ pynayzr --bc xxxxxxxxxxxxxxxx -n tvbs -i tvbs.jpg
+$ pynayzr --bc xxxxxxxxxxxxxxxx -n tvbs -i out.jpg
 {"title": "林佑璇", "subpoint": null, "subtitle": "你們要幹嘛﹗借皇簑的反違尋仇 店面全砸爛", "type": "news", "source": null, "news": "tvbs", "timestamp": "2017-02-17 12:58:47"}
 ```
 
@@ -80,12 +80,15 @@ livestreamer -O https://www.youtube.com/watch\?v\=VsvZqiB2y1o 720p | ffmpeg -i -
 
 * PTS 公共電視 網路直播 PTS Live: https://www.youtube.com/watch?v=zjGR32QyTkQ
 * TTV 台視新聞台HD直播: https://www.youtube.com/watch?v=yk2CUjbyyQY
-* SET 三立新聞直播: https://www.youtube.com/watch?v=TgGyBF-7w8M
-* CTI 中天新聞24小時HD新聞直播: https://www.youtube.com/watch?v=VsvZqiB2y1o
-* EBC 東森新聞 51 頻道 24 小時線上直播: https://www.youtube.com/watch?v=yzE3bRtXIrI
-* FTV 台灣民視新聞HD直播: https://www.youtube.com/watch?v=XxJKnDLYZz4
 * CTV 中視新聞台 LIVE直播: https://www.youtube.com/watch?v=b3QIfgD--_E
 * CTS 華視新聞HD直播: https://www.youtube.com/watch?v=1I6fxNSmQh4
+* NextTV 台中壹新聞直播: https://www.youtube.com/watch?v=xlXLoJAXwKQ
+* EBC 東森新聞 51 頻道 24 小時線上直播: https://www.youtube.com/watch?v=yzE3bRtXIrI
+* CTI 中天新聞24小時HD新聞直播: https://www.youtube.com/watch?v=VsvZqiB2y1o
+* FTV 台灣民視新聞HD直播: https://www.youtube.com/watch?v=XxJKnDLYZz4
+* SET 三立新聞直播: https://www.youtube.com/watch?v=TgGyBF-7w8M
+* TVBS TVBS新聞線上看: http://news.tvbs.com.tw/live/news4live/18
+
 
 ## Reference
 

@@ -10,6 +10,9 @@ from pynayzr import streams
 
 
 class NewsModel:
+    """News model to chop image and do OCR for images
+    """
+
     def __init__(self, news, image_path=None, parser=ocr.parse_by_google):
         if news not in cropper.support_news:
             raise NotImplementedError

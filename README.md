@@ -16,12 +16,22 @@ Label out this kind of information, then we can create the news timeline of
 Taiwan TV news media, transfer into visualize information, and detect Taiwan TV
 news quality.
 
+## Project Progress and TODO
+
+* DONE: Extract frame from livestream
+* DONE: Extract title and subtitle in frame
+* DONE: Command line program
+* TODO: Detect other information in frame (source, news subject)
+* TODO: An visulization website
+* TODO: Persistence database of picture and information
+
 ## Requirements
 
 Please install these package before you start to use news analyzer
 
 * ffmpeg
 * tesseract
+* tesseract-data-chi_tra
 
 ## Apply for OCR API Keys
 

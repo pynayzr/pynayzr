@@ -1,3 +1,6 @@
+# NO NEED TO IMPORT MATERIAL
+material/
+
 # DO NOT IMOPRT KEYS
 key.json
 bkey.json

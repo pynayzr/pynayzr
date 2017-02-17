@@ -2,8 +2,19 @@
 
 # PyNayzr - Taiwan TV-Media Analyzer
 
-This project want to analysis Taiwan TV news media content, using Python,
-tesseract and AI to analyze news content by live stream with frame.
+The Project "PyNayzr" aim to figure Taiwan TV-Media news content, using Python,
+OCR, data information and livestream frame to analyze Taiwan TV news content.
+
+The target of "PyNayzr" is to automatically collect news frame from livestream
+on the Internet, and extract the rich information in the image frame such as
+news subject (e.g. politic, entertainment, social), source (e.g. from foreign
+media CNN, NHK, BBC or media itself, either PTT, Dcard),
+report area (e.g. Asia, Europe, Africa ...), or report country (e.g. USA, Japan,
+China, UK ...).
+
+Label out this kind of information, then we can create the news timeline of
+Taiwan TV news media, transfer into visualize information, and detect Taiwan TV
+news quality.
 
 ## Requirements
 

@@ -5,6 +5,11 @@ from pynayzr import streams
 
 
 class TestStreams(unittest.TestCase):
+    def test_all_streams(self):
+        for news in streams.support_news:
+            with self.subTest(news=news):
+                streams.get(news)
+
     def test_cti(self):
         streams.get('cti').close()
 

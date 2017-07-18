@@ -8,13 +8,13 @@ import tempfile
 support_news = {
     'pts': 'https://www.youtube.com/watch?v=zjGR32QyTkQ',
     'ttv': 'https://www.youtube.com/watch?v=yk2CUjbyyQY',
-    'set': 'https://www.youtube.com/watch?v=TgGyBF-7w8M',
-    'cti': 'https://www.youtube.com/watch?v=VsvZqiB2y1o',
-    'ebc': 'https://www.youtube.com/watch?v=yzE3bRtXIrI',
+    'set': 'https://www.youtube.com/watch?v=15IKxpj1gQA',
+    'cti': 'https://www.youtube.com/watch?v=wUPPkSANpyo',
+    'ebc': 'https://www.youtube.com/watch?v=E07WI7WxVZY',
     'ftv': 'https://www.youtube.com/watch?v=XxJKnDLYZz4',
-    'ctv': 'https://www.youtube.com/watch?v=b3QIfgD--_E',
-    'cts': 'https://www.youtube.com/watch?v=1I6fxNSmQh4',
-    'tvbs': 'http://bcoveliveios-i.akamaihd.net/hls/live/255252/4005328949001_13/playlistTVBS-N-HD-CH1-M.m3u8'
+    'ctv': 'https://www.youtube.com/watch?v=qIa-L8URVBI',
+    'cts': 'https://www.youtube.com/watch?v=7UF21-RF0pY',
+    'tvbs': 'https://bcsecurelivehls-i.akamaihd.net/hls/live/510708/4862438529001/playlistTVBS-N-HD-CH1-M.m3u8'
 }
 
 

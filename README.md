@@ -94,7 +94,7 @@ $ pynayzr --bc xxxxxxxxxxxxxxxx -n tvbs -i out.jpg
 ## Capture live stream to image in command line
 
 ```bash
-livestreamer -O https://www.youtube.com/watch\?v\=VsvZqiB2y1o 720p | ffmpeg -i - -f image2 -updatefirst 1 -r 1/5 out.jpg
+streamlink -O https://www.youtube.com/watch\?v\=VsvZqiB2y1o 720p | ffmpeg -i - -f image2 -updatefirst 1 -r 1/5 out.jpg
 ```
 
 ## List of News

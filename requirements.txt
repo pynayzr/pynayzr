@@ -1,6 +1,0 @@
-pyocr
-pillow
-google-api-python-client
-livestreamer
-nose
-requests

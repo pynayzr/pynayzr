@@ -59,8 +59,8 @@ def get(news):
 
     # Other news using youtube
     with tempfile.TemporaryDirectory() as temp_dir:
-        livestream = [
-            'livestreamer',
+        streamlink = [
+            'streamlink',
             '-O',
             support_news[news],
             '720p'
@@ -77,7 +77,7 @@ def get(news):
             '%s/out.jpg' % (temp_dir)
         ]
 
-        p1 = subprocess.Popen(livestream, stderr=subprocess.DEVNULL, stdout=subprocess.PIPE)
+        p1 = subprocess.Popen(streamlink, stderr=subprocess.DEVNULL, stdout=subprocess.PIPE)
         p2 = subprocess.Popen(ffmpeg, stdout=subprocess.DEVNULL,
                               stderr=subprocess.DEVNULL, stdin=p1.stdout)
         p1.stdout.close()

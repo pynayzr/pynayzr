@@ -6,14 +6,14 @@ import tempfile
 
 
 support_news = {
-    'pts': 'https://www.youtube.com/watch?v=zjGR32QyTkQ',
+    'pts': 'https://www.youtube.com/watch?v=_isseGKrquc',
     'ttv': 'https://www.youtube.com/watch?v=yk2CUjbyyQY',
-    'set': 'https://www.youtube.com/watch?v=15IKxpj1gQA',
+    'set': 'https://www.youtube.com/watch?v=4ZVUmEUFwaY',
     'cti': 'https://www.youtube.com/watch?v=wUPPkSANpyo',
-    'ebc': 'https://www.youtube.com/watch?v=E07WI7WxVZY',
+    'ebc': 'https://www.youtube.com/watch?v=dxpWqjvEKaM',
     'ftv': 'https://www.youtube.com/watch?v=XxJKnDLYZz4',
-    'ctv': 'https://www.youtube.com/watch?v=qIa-L8URVBI',
-    'cts': 'https://www.youtube.com/watch?v=7UF21-RF0pY',
+    'ctv': 'https://www.youtube.com/watch?v=DVOHYy_m_qU',
+    'cts': 'https://www.youtube.com/watch?v=TL8mmew3jb8',
     'tvbs': 'https://www.youtube.com/watch?v=Hu1FkdAOws0'
 }
 

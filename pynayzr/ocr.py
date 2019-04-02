@@ -12,8 +12,9 @@
 #    str: The text in the img
 #
 
-
+import aiohttp
 import requests
+from PIL import Image
 
 # Tesseract
 import pyocr
@@ -38,7 +39,8 @@ credentials = None
 service = None
 
 # Bing Computer Vision Settings
-bing_api = 'https://westus.api.cognitive.microsoft.com/vision/v1.0/ocr?language=zh-Hant&detectOrientation=false'
+bing_api = ('https://japaneast.api.cognitive.microsoft.com/vision/v1.0/ocr?'
+            'language=zh-Hant&detectOrientation=false')
 bing_credentials = None
 
 
@@ -66,9 +68,39 @@ async def parse_by_async_tesseract(img):
     return await async_tool.image_to_string(img.convert('L'), lang=lang)
 
 
-def parse_by_bing(img):
+def merge_imgs(imgs):
+    wa = [img.size[0] for img in imgs]
+    ha = [img.size[1] for img in imgs]
+    w = max(wa)
+    h = sum(ha) + 10 * len(ha)
+
+    im = Image.new('RGB', (w, h), '#000000')
+    for index, img in enumerate(imgs):
+        im.paste(img, (0, sum(ha[:index]) + 10 * index))
+    return im
+
+
+def parse_by_bing(imgs: list):
     if not bing_credentials:
         raise ValueError('Set Bing Computer Vision API Credentials first')
+
+    one_img = False
+    if isinstance(imgs, Image.Image) or len(imgs) == 1:
+        one_img = True
+        img = imgs[0] if isinstance(imgs, list) else imgs
+
+        # Check if image size have 50x50
+        w, h = img.size
+        if w < 50 or h < 50:
+            if w < 50:
+                w = 50
+            if h < 50:
+                h = 50
+        im = Image.new('RGB', (w, h), '#000000')
+        im.paste(img, (0, 0))
+        img = im
+    else:
+        img = merge_imgs(imgs)
 
     b = io.BytesIO()
     img.save(b, format='PNG')
@@ -76,11 +108,44 @@ def parse_by_bing(img):
     r = requests.post(url=bing_api, data=image_content,
                       headers={'Content-Type': 'application/octet-stream',
                                'Ocp-Apim-Subscription-Key': bing_credentials})
-
     try:
-        return ''.join([i['text'] for i in r.json()['regions'][0]['lines'][0]['words']])
+        if one_img:
+            return ''.join([i['text'] for i in r.json()['regions'][0]['lines'][0]['words']])
+        else:
+            return [''.join(i['text'] for i in line['words'])
+                    for line in r.json()['regions'][0]['lines']], r.json()
     except Exception:
         return ''
+
+
+async def parse_by_async_bing(img):
+    if not bing_credentials:
+        raise ValueError('Set Bing Computer Vision API Credentials first')
+
+    # Check if image size have 50x50
+    w, h = img.size
+    if w < 50 or h < 50:
+        if w < 50:
+            w = 50
+        if h < 50:
+            h = 50
+        im = Image.new('RGB', (w, h), '#000000')
+        im.paste(img, (0, 0))
+        img = im
+
+    b = io.BytesIO()
+    img.save(b, format='PNG')
+    image_content = b.getvalue()
+    async with aiohttp.ClientSession() as session:
+        async with session.post(url=bing_api, data=image_content,
+                                headers={
+                                    'Content-Type': 'application/octet-stream',
+                                    'Ocp-Apim-Subscription-Key': bing_credentials}) as resp:
+            try:
+                j = await resp.json()
+                return ''.join([i['text'] for i in j['regions'][0]['lines'][0]['words']])
+            except Exception:
+                return ''
 
 
 def parse_by_google(img):

@@ -50,10 +50,9 @@ def main():
         else:
             analyze = pynayzr.analyze(args.news, parser=parser,
                                       _async=False)
-        print(analyze.to_json())
-
     if args.output and analyze:
             analyze.save_all(args.output)
+    print(analyze.to_json())
 
 
 if __name__ == '__main__':

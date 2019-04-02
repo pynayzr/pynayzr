@@ -18,6 +18,7 @@ import requests
 # Tesseract
 import pyocr
 import pyocr.builders
+import async_pyocr
 
 # Google Vision API
 import io
@@ -28,6 +29,8 @@ from oauth2client.service_account import ServiceAccountCredentials
 # Tesseract Settings
 tools = pyocr.get_available_tools()
 tool = tools[0]
+async_tools = async_pyocr.get_available_tools()
+async_tool = async_tools[0]
 lang = 'chi_tra'
 
 # Google Vision Settings
@@ -57,6 +60,10 @@ def get_google_credentials():
 def parse_by_tesseract(img):
     return tool.image_to_string(img.convert('L'), lang=lang,
                                 builder=pyocr.builders.TextBuilder())
+
+
+async def parse_by_async_tesseract(img):
+    return await async_tool.image_to_string(img.convert('L'), lang=lang)
 
 
 def parse_by_bing(img):

@@ -13,6 +13,8 @@ google-api-python-client = "*"
 nose = "*"
 requests = "*"
 oauth2client = "*"
+pynayzr = {editable = true,path = "."}
+async-pyocr = {editable = true,git = "https://github.com/mlouielu/async-pyocr/"}
 
 [requires]
 python_version = "3.7"

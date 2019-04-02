@@ -45,9 +45,11 @@ def main():
     if args.news:
         if args.input:
             analyze = pynayzr.NewsModel(args.news,
-                                        image_path=args.input, parser=parser)
+                                        image_path=args.input, parser=parser,
+                                        _async=False)
         else:
-            analyze = pynayzr.analyze(args.news, parser=parser)
+            analyze = pynayzr.analyze(args.news, parser=parser,
+                                      _async=False)
         print(analyze.to_json())
 
     if args.output and analyze:

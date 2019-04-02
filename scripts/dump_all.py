@@ -50,11 +50,11 @@ def main():
     im.save(dir_path.joinpath('wall.jpg'))
     for news, model in nm.items():
         # Dump img
-        model.save_all(dir_path.joinpath(f'{news}.jpg'))
+        model.save_all(dir_path.joinpath(f'{news}'))
 
         # Dump text json
-        json.dump(model.to_json(), open(dir_path.joinpath(f'{news}.json'), 'w'),
-                  ensure_ascii=False, indent=4)
+        with open(dir_path.joinpath(f'{news}.json'), 'w') as f:
+            f.write(model.to_json())
 
 
 if __name__ == '__main__':

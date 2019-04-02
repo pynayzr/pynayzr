@@ -12,6 +12,7 @@ def get_histogram_diff_sum(a, b):
 
 class EBCCropper(crop.CropBase):
     def __init__(self, image_path=None, img=None):
+        super().__init__('ebc')
         if not image_path and not img:
             raise ValueError
 

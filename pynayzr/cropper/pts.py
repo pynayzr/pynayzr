@@ -6,6 +6,7 @@ from pynayzr.cropper import crop
 
 class PTSCropper(crop.CropBase):
     def __init__(self, image_path=None, img=None):
+        super().__init__('pts')
         if not image_path and not img:
             raise ValueError
 

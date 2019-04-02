@@ -6,6 +6,7 @@ from pynayzr.cropper import crop
 
 class CTICropper(crop.CropBase):
     def __init__(self, image_path=None, img=None):
+        super().__init__('cti')
         if not image_path and not img:
             raise ValueError
 

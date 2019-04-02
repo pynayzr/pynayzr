@@ -7,14 +7,14 @@ from PIL import Image
 
 
 support_news = {
-    'pts': 'https://www.youtube.com/watch?v=_isseGKrquc',
     'ttv': 'https://www.youtube.com/watch?v=yk2CUjbyyQY',
-    'set': 'https://www.youtube.com/watch?v=4ZVUmEUFwaY',
-    'cti': 'https://www.youtube.com/watch?v=wUPPkSANpyo',
-    'ebc': 'https://www.youtube.com/watch?v=dxpWqjvEKaM',
-    'ftv': 'https://www.youtube.com/watch?v=XxJKnDLYZz4',
     'ctv': 'https://www.youtube.com/watch?v=DVOHYy_m_qU',
     'cts': 'https://www.youtube.com/watch?v=TL8mmew3jb8',
+    'pts': 'https://www.youtube.com/watch?v=_isseGKrquc',
+    'ebc': 'https://www.youtube.com/watch?v=dxpWqjvEKaM',
+    'cti': 'https://www.youtube.com/watch?v=wUPPkSANpyo',
+    'ftv': 'https://www.youtube.com/watch?v=XxJKnDLYZz4',
+    'set': 'https://www.youtube.com/watch?v=4ZVUmEUFwaY',
     'tvbs': 'https://www.youtube.com/watch?v=Hu1FkdAOws0'
 }
 

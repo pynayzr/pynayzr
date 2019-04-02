@@ -47,9 +47,9 @@ class NewsModel:
 
     def _parse(self):
         self._parsed = True
-        self.title = self.parser(self.crop.title())
-        self.subpoint = self.parser(self.crop.subpoint())
-        self.subtitle = self.parser(self.crop.subtitle())
+        self.title = self.parser(self.crop_title)
+        self.subpoint = self.parser(self.crop_subpoint)
+        self.subtitle = self.parser(self.crop_subtitle)
 
     @property
     def type(self):

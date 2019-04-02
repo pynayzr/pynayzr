@@ -14,15 +14,14 @@ class NewsModel:
     """News model to chop image and do OCR for images
     """
 
-    def __init__(self, news, image_path=None, parser=None,_async=True):
+    def __init__(self, news, image_path=None, parser=None, aparser=None,
+                 _async=True):
         if news not in cropper.support_news:
             raise NotImplementedError
         self.news = news
 
-        # Force parser to tesseract if google credentials not found
-        if not parser:
-            parser = ocr.parse_by_async_tesseract if _async else ocr.parse_by_tesseract
-        self.parser = parser
+        self.parser = parser if parser else ocr.parse_by_tesseract
+        self.aparser = aparser if aparser else ocr.parse_by_async_tesseract
 
         # Lazy parse
         self._async = _async
@@ -38,6 +37,7 @@ class NewsModel:
 
         # Choice image source from live or image
         # NOTE: Image size must be 1280x720
+        self.img_read_timestamp = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         if image_path:
             self.img = Image.open(image_path)
             self._crop()
@@ -69,7 +69,7 @@ class NewsModel:
         if not self.parser or not self.img or not self.crop:
             return
 
-        if True:
+        if self.parser not in [ocr.parse_by_bing]:
             self._title = self.parser(self.crop_title)
             if self.crop_subtitle:
                 self._subtitle = self.parser(self.crop_subtitle)
@@ -87,12 +87,27 @@ class NewsModel:
                 setattr(self, attr, v)
 
     async def _async_parse(self):
-        if not self.parser or not self.img or not self.crop:
+        if not self.aparser or not self.img or not self.crop:
             return
-        self._title = await self.parser(self.crop_title)
-        if self.crop_subtitle:
-            self._subtitle = await self.parser(self.crop_subtitle)
-        self._subpoint = await self.parser(self.crop_subpoint)
+        if self.aparser not in [ocr.parse_by_async_bing]:
+            self._title = await self.aparser(self.crop_title)
+            if self.crop_subtitle:
+                self._subtitle = await self.aparser(self.crop_subtitle)
+            self._subpoint = await self.aparser(self.crop_subpoint)
+        else:
+            # XXX: Only Bing support this
+            # Do it once
+            attrs = ['_title', '_subpoint']
+            imgs = [self.crop_title, self.crop_subpoint]
+            if self.crop_subtitle:
+                attrs.append('_subtitle')
+                imgs.append(self.crop_subtitle)
+            results, j = await self.aparser(imgs)
+            for attr, v in zip(attrs, results):
+                setattr(self, attr, v)
+            for attr in attrs:
+                if getattr(self, attr) is None:
+                    setattr(self, attr, '')
 
     @property
     def type(self):
@@ -127,10 +142,9 @@ class NewsModel:
         # XXX: WTF? You will need to deal with property, I TOLD YOU
         #      >>> nm.subtitle  # this will failed when using async
         if (self._async and
-                (self._title is None or self._subtitle is None or
-                 self._subpoint is None)):
+                (self._title is None or self._subpoint is None)):
             asyncio.run(self._async_parse())
-        elif self._title is None or self._subtitle is None or self._subpoint is None:
+        elif not self._async and (self._title is None or self._subpoint is None):
             self._parse()
 
         ret = {
@@ -163,14 +177,15 @@ def analyze(news, parser=ocr.parse_by_google, _async=False):
     return NewsModel(news, parser=parser, _async=_async)
 
 
-async def async_analyze(news: list, parser=ocr.parse_by_google, parse=False):
+async def async_analyze(news: list, parser=None, aparser=None, parse=False):
     async def mark(key, coro):
         return key, await coro
+
     if parse:
-        d = {n: NewsModel.create_and_parse(NewsModel(n, parser=parser))
+        d = {n: NewsModel.create_and_parse(NewsModel(n, parser=parser, aparser=aparser))
              for n in news}
     else:
-        d = {n: NewsModel.create(NewsModel(n, parser=parser))
+        d = {n: NewsModel.create(NewsModel(n, parser=parser, aparser=aparser))
              for n in news}
     return {
         key: result

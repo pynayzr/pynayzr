@@ -4,6 +4,10 @@ material/
 # DO NOT IMOPRT KEYS
 key.json
 bkey.json
+*.json
+
+# WFT?
+*.py~
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

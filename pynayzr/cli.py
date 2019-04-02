@@ -51,7 +51,7 @@ def main():
         print(analyze.to_json())
 
     if args.output and analyze:
-            analyze.img.save(args.output)
+            analyze.save_all(args.output)
 
 
 if __name__ == '__main__':

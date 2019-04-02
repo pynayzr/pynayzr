@@ -32,6 +32,10 @@ class CropBase:
             return self.image.crop(self.subtitle_box)
         return None
 
+    def bottom(self):
+        # XXX: Assume image is 720p
+        return self.image.crop([0, 530, 1280, 720])
+
     def person(self):
         if self.person_box:
             return self.image.crop(self.person_box)

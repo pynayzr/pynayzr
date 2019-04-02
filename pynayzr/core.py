@@ -31,12 +31,25 @@ class NewsModel:
         self.crop = cropper.support_news[news](img=self.img)
         self.parser = parser
 
-        self.title = parser(self.crop.title())
-        self.subpoint = parser(self.crop.subpoint())
-        self.subtitle = parser(self.crop.subtitle())
+        self.crop_title = self.crop.title()
+        self.crop_subpoint = self.crop.subpoint()
+        self.crop_subtitle = self.crop.subtitle()
+        self.crop_bottom = self.crop.bottom()
+
+        # Lazy parse
+        self._parsed = False
+        self.title = None
+        self.subpoint = None
+        self.subtitle = None
         self._type = 'unknown'
         self.subject = None
         self.source = None
+
+    def _parse(self):
+        self._parsed = True
+        self.title = self.parser(self.crop.title())
+        self.subpoint = self.parser(self.crop.subpoint())
+        self.subtitle = self.parser(self.crop.subtitle())
 
     @property
     def type(self):
@@ -47,6 +60,9 @@ class NewsModel:
         return self._type
 
     def to_json(self):
+        if not self._parsed:
+            self._parse()
+
         ret = {
             'title': self.title, 'subpoint': self.subpoint,
             'subtitle': self.subtitle, 'type': self.type,
@@ -54,6 +70,13 @@ class NewsModel:
             'timestamp': datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         }
         return json.dumps(ret, ensure_ascii=False)
+
+    def save_all(self, filename: str, img_type='jpg'):
+        self.img.save(f'{filename}.{img_type}')
+        self.crop_title.save(f'{filename}_title.{img_type}')
+        self.crop_subpoint.save(f'{filename}_subpoint.{img_type}')
+        self.crop_subtitle.save(f'{filename}_subtitle.{img_type}')
+        self.crop_bottom.save(f'{filename}_bottom.{img_type}')
 
     def debug(self):
         self.img.show()

@@ -17,6 +17,6 @@ class PTSCropper(crop.CropBase):
         if image_path:
             self.image = Image.open(image_path)
 
-        self.title_box = (293, 554, 1280, 640)
-        self.subpoint_box = (252, 640, 434, 720)
-        self.subtitle_box = (434, 640, 1280, 720)
+        self.title_box = (348, 600, 1150, 660)
+        self.subpoint_box = (120, 590, 340, 670)
+        self.subtitle_box = None

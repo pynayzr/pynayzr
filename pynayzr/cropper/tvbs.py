@@ -17,6 +17,6 @@ class TVBSCropper(crop.CropBase):
         if image_path:
             self.image = Image.open(image_path)
 
-        self.title_box = (320, 578, 1200, 642)
-        self.subpoint_box = (320, 642, 480, 700)
-        self.subtitle_box = (480, 642, 1280, 700)
+        self.title_box = (320, 572, 1250, 642)
+        self.subpoint_box = (320, 645, 475, 680)
+        self.subtitle_box = (475, 645, 1280, 680)

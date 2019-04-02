@@ -17,7 +17,7 @@ class SETSCropper(crop.CropBase):
         if image_path:
             self.image = Image.open(image_path)
 
-        self.title_box = (275, 560, 1200, 641)
-        self.subpoint_box = (275, 645, 420, 720)
-        self.subtitle_box = (432, 645, 1280, 720)
+        self.title_box = (280, 565, 1260, 645)
+        self.subpoint_box = (275, 650, 445, 720)
+        self.subtitle_box = (445, 650, 1280, 720)
         self.source_box = (75, 475, 275, 530)

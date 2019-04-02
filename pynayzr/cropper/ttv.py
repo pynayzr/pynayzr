@@ -18,6 +18,6 @@ class TTVCropper(crop.CropBase):
             self.image = Image.open(image_path)
 
         # TTV will use title box for substitute
-        self.title_box = (293, 554, 1280, 640)
-        self.subpoint_box = (252, 640, 434, 720)
-        self.subtitle_box = (434, 640, 1280, 720)
+        self.title_box = (260, 560, 1280, 640)
+        self.subpoint_box = (252, 650, 434, 720)
+        self.subtitle_box = (434, 650, 1280, 720)

@@ -18,11 +18,5 @@ class FTVCropper(crop.CropBase):
             self.image = Image.open(image_path)
 
         self.title_box = (295, 580, 1280, 649)
-        self.subpoint_box = (252, 650, 400, 690)
+        self.subpoint_box = (252, 655, 400, 690)
         self.subtitle_box = (415, 650, 1280, 720)
-
-
-if __name__ == '__main__':
-    import pynayzr
-    pynayzr.set_google_credentials('tests/key.json')
-    p = pynayzr.analyze('ftv')

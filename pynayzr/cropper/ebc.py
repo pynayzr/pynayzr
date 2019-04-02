@@ -23,13 +23,14 @@ class EBCCropper(crop.CropBase):
         if image_path:
             self.image = Image.open(image_path)
 
-        self.blue_title_box = (320, 578, 1200, 642)
-        self.yellow_title_box = (0, 578, 1200, 642)
-        self.subpoint_box = (320, 642, 480, 700)
-        self.subtitle_box = (480, 642, 1280, 700)
+        self.blue_title_box = (90, 578, 1260, 645)
+        self.yellow_title_box = (90, 578, 1260, 645)
+        self.subpoint_box = (250, 650, 420, 690)
+        self.subtitle_box = (430, 650, 1260, 690)
 
     def title(self):
         yellow_sample = self.image.crop((0, 570, 100, 640)).histogram()
-        if get_histogram_diff_sum(yellow_sample, yello_histogram) < 2e3:
+        print(get_histogram_diff_sum(yello_histogram, yellow_sample))
+        if get_histogram_diff_sum(yellow_sample, yello_histogram) < 5e3:
             return self.image.crop(self.yellow_title_box)
         return self.image.crop(self.blue_title_box)

@@ -49,7 +49,7 @@ class NewsModel:
         self._parsed = True
         self.title = self.parser(self.crop_title)
         self.subpoint = self.parser(self.crop_subpoint)
-        self.subtitle = self.parser(self.crop_subtitle)
+        self.subtitle = self.parser(self.crop_subtitle) if self.crop_subtitle else ""
 
     @property
     def type(self):
@@ -75,7 +75,8 @@ class NewsModel:
         self.img.save(f'{filename}.{img_type}')
         self.crop_title.save(f'{filename}_title.{img_type}')
         self.crop_subpoint.save(f'{filename}_subpoint.{img_type}')
-        self.crop_subtitle.save(f'{filename}_subtitle.{img_type}')
+        if self.crop_subtitle:
+            self.crop_subtitle.save(f'{filename}_subtitle.{img_type}')
         self.crop_bottom.save(f'{filename}_bottom.{img_type}')
 
     def debug(self):

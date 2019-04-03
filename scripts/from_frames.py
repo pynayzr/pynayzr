@@ -14,6 +14,7 @@ from PIL import Image, ImageDraw
 REFERENCE_BOX = {
     'tvbs': (50, 50, 150, 63),
     'ftv': (80, 43, 89, 63),
+    'cti': (90, 40, 100, 60)
 }
 
 
@@ -83,7 +84,6 @@ def main():
                 im = Image.open(bottoms[current_i + 1])
                 if imgcompare.is_equal(cp, im.crop(cp_box), 3):
                     uniq.append(prev)
-                    print(prev)
                     times.append((get_frame_time(current),
                                   get_frame_time(i)))
                     durations.append(times[-1][1] - times[-1][0])

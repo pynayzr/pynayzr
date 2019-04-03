@@ -6,6 +6,7 @@ from pynayzr.cropper import crop
 
 class TVBSCropper(crop.CropBase):
     def __init__(self, image_path=None, img=None):
+        super().__init__('tvbs')
         if not image_path and not img:
             raise ValueError
 
@@ -17,6 +18,6 @@ class TVBSCropper(crop.CropBase):
         if image_path:
             self.image = Image.open(image_path)
 
-        self.title_box = (320, 572, 1250, 642)
+        self.title_box = (320, 572, 1200, 642)
         self.subpoint_box = (320, 645, 475, 680)
         self.subtitle_box = (475, 645, 1280, 680)

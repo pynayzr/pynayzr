@@ -32,5 +32,5 @@ class EBCCropper(crop.CropBase):
     def title(self):
         yellow_sample = self.image.crop((0, 570, 100, 640)).histogram()
         if get_histogram_diff_sum(yellow_sample, yello_histogram) < 5e3:
-            return self.image.crop(self.yellow_title_box)
-        return self.image.crop(self.blue_title_box)
+            return self.image.crop(self.resize(self.yellow_title_box))
+        return self.image.crop(self.resize(self.blue_title_box))

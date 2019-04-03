@@ -97,6 +97,17 @@ $ pynayzr --bc xxxxxxxxxxxxxxxx -n tvbs -i out.jpg
 streamlink -O https://www.youtube.com/watch\?v\=VsvZqiB2y1o 720p | ffmpeg -i - -f image2 -updatefirst 1 -r 1/5 out.jpg
 ```
 
+
+## scripts
+
+### from_frames.py
+
+Extract title from frames and paste it into a wall
+
+![](img/cti_2019032112.jpg)
+![](img/ftv_2019032111.jpg)
+![](img/tvbs_2019032111.jpg)
+
 ## List of News
 
 * PTS 公共電視 網路直播 PTS Live: https://www.youtube.com/watch?v=zjGR32QyTkQ

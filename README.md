@@ -104,9 +104,7 @@ streamlink -O https://www.youtube.com/watch\?v\=VsvZqiB2y1o 720p | ffmpeg -i - -
 
 Extract title from frames and paste it into a wall
 
-![](img/cti_2019032112.jpg)
-![](img/ftv_2019032111.jpg)
-![](img/tvbs_2019032111.jpg)
+![](img/wall.jpg)
 
 ## List of News
 

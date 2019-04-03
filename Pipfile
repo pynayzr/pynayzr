@@ -16,6 +16,7 @@ oauth2client = "*"
 pynayzr = {editable = true,path = "."}
 async-pyocr = {editable = true,git = "https://github.com/mlouielu/async-pyocr/"}
 aiohttp = "*"
+imgcompare = "*"
 
 [requires]
 python_version = "3.7"

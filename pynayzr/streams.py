@@ -8,7 +8,7 @@ from PIL import Image
 
 support_news = {
     'ttv': 'https://www.youtube.com/watch?v=yk2CUjbyyQY',
-    'ctv': 'https://www.youtube.com/watch?v=DVOHYy_m_qU',
+    'ctv': 'https://www.youtube.com/watch?v=XBne4oJGEhE',
     'cts': 'https://www.youtube.com/watch?v=TL8mmew3jb8',
     'pts': 'https://www.youtube.com/watch?v=_isseGKrquc',
     'ebc': 'https://www.youtube.com/watch?v=dxpWqjvEKaM',
